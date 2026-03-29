@@ -97,6 +97,7 @@ const App = () => {
               <img src="/logo.png" alt="MCC Logo" style={{ maxWidth: '100%', height: 'auto' }} />
             </div>
             <h1 className="mcc-title">Methodist Comprehensive College, Sagamu</h1>
+            <h2 className="alumni-set">2001 Alumni Set</h2>
             <p className="mcc-tagline">Honesty and Industry</p>
           </header>
 
