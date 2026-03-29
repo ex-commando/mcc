@@ -1,4 +1,6 @@
-# Methodist Comprehensive College Data Collection (React)
+# MCC Sagamu | High-Fidelity Data Collection Form
+
+Official Repository: [ex-commando / mcc](https://github.com/ex-commando/mcc)
 
 This is a modern, high-fidelity React implementation of the data collection form for **Methodist Comprehensive College, Sagamu**.
 

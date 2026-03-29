@@ -11,7 +11,11 @@ import {
   CheckCircle, 
   AlertCircle,
   Loader2,
-  ChevronRight
+  ChevronRight,
+  GraduationCap,
+  Heart,
+  Home,
+  ShieldCheck
 } from 'lucide-react';
 
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw-DMKCjfWmpagOz2cb5olgrHOjmthgVDHJBfTm8MDF41zheQqQo9wl9BBxFmA0EJjfWg/exec';
@@ -19,20 +23,28 @@ const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw-DMKCjfWmpagOz2cb5
 const App = () => {
   const [formData, setFormData] = useState({
     name: '',
+    maidenName: '',
     address: '',
+    officeAddress: '',
     phone: '',
     whatsapp: '',
     gender: '',
     dob: '',
-    occupation: ''
+    occupation: '',
+    classFriend: '',
+    classIn: '',
+    acceptConduct: false
   });
 
   const [status, setStatus] = useState('idle'); // idle, loading, success, error
   const [showModal, setShowModal] = useState(false);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    const { name, value, type, checked } = e.target;
+    setFormData(prev => ({ 
+      ...prev, 
+      [name]: type === 'checkbox' ? checked : value 
+    }));
   };
 
   const handleSubmit = async (e) => {
@@ -51,12 +63,17 @@ const App = () => {
       setShowModal(true);
       setFormData({
         name: '',
+        maidenName: '',
         address: '',
+        officeAddress: '',
         phone: '',
         whatsapp: '',
         gender: '',
         dob: '',
-        occupation: ''
+        occupation: '',
+        classFriend: '',
+        classIn: '',
+        acceptConduct: false
       });
     } catch (error) {
       console.error('Submission error:', error);
@@ -84,33 +101,62 @@ const App = () => {
           </header>
 
           <form onSubmit={handleSubmit}>
-            <div className="single-field">
-              <label className="field-label">
-                <User size={18} /> Full Name
-              </label>
-              <input 
-                type="text" 
-                name="name" 
-                value={formData.name}
-                onChange={handleChange}
-                required 
-                placeholder="John Doe"
-                className="custom-input"
-              />
+            <div className="row-grid">
+              <div>
+                <label className="field-label">
+                  <User size={18} /> Full Name
+                </label>
+                <input 
+                  type="text" 
+                  name="name" 
+                  value={formData.name}
+                  onChange={handleChange}
+                  required 
+                  placeholder="John Doe"
+                  className="custom-input"
+                />
+              </div>
+              <div>
+                <label className="field-label">
+                  <Heart size={18} /> Maiden Name
+                </label>
+                <input 
+                  type="text" 
+                  name="maidenName" 
+                  value={formData.maidenName}
+                  onChange={handleChange}
+                  placeholder="If applicable"
+                  className="custom-input"
+                />
+              </div>
             </div>
 
-            <div className="single-field">
-              <label className="field-label">
-                <MapPin size={18} /> Residential Address
-              </label>
-              <textarea 
-                name="address" 
-                value={formData.address}
-                onChange={handleChange}
-                required 
-                placeholder="Ex. 123 Education Road, Sagamu"
-                className="custom-input"
-              />
+            <div className="row-grid">
+              <div>
+                <label className="field-label">
+                  <MapPin size={18} /> Residential Address
+                </label>
+                <textarea 
+                  name="address" 
+                  value={formData.address}
+                  onChange={handleChange}
+                  required 
+                  placeholder="Ex. 123 Education Road, Sagamu"
+                  className="custom-input"
+                />
+              </div>
+              <div>
+                <label className="field-label">
+                  <Home size={18} /> Office Address
+                </label>
+                <textarea 
+                  name="officeAddress" 
+                  value={formData.officeAddress}
+                  onChange={handleChange}
+                  placeholder="Business/Work location"
+                  className="custom-input"
+                />
+              </div>
             </div>
 
             <div className="row-grid">
@@ -177,19 +223,69 @@ const App = () => {
               </div>
             </div>
 
+            <div className="row-grid">
+              <div>
+                <label className="field-label">
+                  <Briefcase size={18} /> Occupation
+                </label>
+                <input 
+                  type="text" 
+                  name="occupation" 
+                  value={formData.occupation}
+                  onChange={handleChange}
+                  required 
+                  placeholder="Current Profession"
+                  className="custom-input"
+                />
+              </div>
+              <div>
+                <label className="field-label">
+                  <User size={18} /> Class Friend
+                </label>
+                <input 
+                  type="text" 
+                  name="classFriend" 
+                  value={formData.classFriend}
+                  onChange={handleChange}
+                  placeholder="Name of a school friend"
+                  className="custom-input"
+                />
+              </div>
+            </div>
+
             <div className="single-field">
               <label className="field-label">
-                <Briefcase size={18} /> Occupation
+                <GraduationCap size={18} /> Class In
               </label>
-              <input 
-                type="text" 
-                name="occupation" 
-                value={formData.occupation}
+              <select 
+                name="classIn" 
+                value={formData.classIn}
                 onChange={handleChange}
-                required 
-                placeholder="Current Profession"
+                required
                 className="custom-input"
+              >
+                <option value="" disabled>Select Department/Class</option>
+                <option value="Science A">Science A</option>
+                <option value="Science B">Science B</option>
+                <option value="Commercial A">Commercial A</option>
+                <option value="Commercial B">Commercial B</option>
+                <option value="Commercial C">Commercial C</option>
+                <option value="Art class">Art class</option>
+              </select>
+            </div>
+
+            <div className="checkbox-field">
+              <input 
+                type="checkbox" 
+                id="acceptConduct"
+                name="acceptConduct" 
+                checked={formData.acceptConduct}
+                onChange={handleChange}
+                required
               />
+              <label htmlFor="acceptConduct">
+                I accept the <a href="https://docs.google.com/document/d/1UBUOxNkfOqpwDWJVKiW2AhS8GmZDe4hbQW6g-KHB2bs/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Code of Conduct</a>
+              </label>
             </div>
 
             <button 

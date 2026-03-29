@@ -10,19 +10,38 @@ function doPost(e) {
     
     // Check if sheet is empty and add headers if needed
     if (sheet.getLastRow() === 0) {
-      sheet.appendRow(['Timestamp', 'Name', 'Address', 'Phone', 'WhatsApp', 'Gender', 'DOB', 'Occupation']);
+      sheet.appendRow([
+        'Timestamp', 
+        'Name', 
+        'Maiden Name',
+        'Residential Address', 
+        'Office Address',
+        'Phone', 
+        'WhatsApp', 
+        'Gender', 
+        'DOB', 
+        'Occupation', 
+        'Class Friend', 
+        'Class In', 
+        'Conduct Accepted'
+      ]);
     }
 
     // Append the row from incoming data
     sheet.appendRow([
       new Date().toLocaleString(),
       data.name,
+      data.maidenName,
       data.address,
+      data.officeAddress,
       data.phone,
       data.whatsapp,
       data.gender,
       data.dob,
-      data.occupation
+      data.occupation,
+      data.classFriend,
+      data.classIn,
+      data.acceptConduct ? 'Yes' : 'No'
     ]);
 
     return ContentService.createTextOutput(JSON.stringify({result: 'success'}))
