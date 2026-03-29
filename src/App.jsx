@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  User, 
-  MapPin, 
-  Phone, 
-  MessageSquare, 
-  Users, 
-  Briefcase, 
-  Calendar, 
-  CheckCircle, 
+import {
+  User,
+  MapPin,
+  Phone,
+  MessageSquare,
+  Users,
+  Briefcase,
+  Calendar,
+  CheckCircle,
   AlertCircle,
   Loader2,
   ChevronRight,
@@ -18,7 +18,7 @@ import {
   ShieldCheck
 } from 'lucide-react';
 
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw-DMKCjfWmpagOz2cb5olgrHOjmthgVDHJBfTm8MDF41zheQqQo9wl9BBxFmA0EJjfWg/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx_qZ9bKO3VLlAtqis5F9GxyuEsDughCLcnqkmN-KTzELPYfzzkBSo19Wjdl4WqWZx4Iw/exec';
 
 const App = () => {
   const [formData, setFormData] = useState({
@@ -41,9 +41,9 @@ const App = () => {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData(prev => ({ 
-      ...prev, 
-      [name]: type === 'checkbox' ? checked : value 
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
     }));
   };
 
@@ -84,7 +84,7 @@ const App = () => {
 
   return (
     <div className="main-wrapper">
-      <motion.div 
+      <motion.div
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: "circOut" }}
@@ -107,12 +107,12 @@ const App = () => {
                 <label className="field-label">
                   <User size={18} /> Full Name
                 </label>
-                <input 
-                  type="text" 
-                  name="name" 
+                <input
+                  type="text"
+                  name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  required 
+                  required
                   placeholder="John Doe"
                   className="custom-input"
                 />
@@ -121,9 +121,9 @@ const App = () => {
                 <label className="field-label">
                   <Heart size={18} /> Maiden Name
                 </label>
-                <input 
-                  type="text" 
-                  name="maidenName" 
+                <input
+                  type="text"
+                  name="maidenName"
                   value={formData.maidenName}
                   onChange={handleChange}
                   placeholder="If applicable"
@@ -137,11 +137,11 @@ const App = () => {
                 <label className="field-label">
                   <MapPin size={18} /> Residential Address
                 </label>
-                <textarea 
-                  name="address" 
+                <textarea
+                  name="address"
                   value={formData.address}
                   onChange={handleChange}
-                  required 
+                  required
                   placeholder="Ex. 123 Education Road, Sagamu"
                   className="custom-input"
                 />
@@ -150,8 +150,8 @@ const App = () => {
                 <label className="field-label">
                   <Home size={18} /> Office Address
                 </label>
-                <textarea 
-                  name="officeAddress" 
+                <textarea
+                  name="officeAddress"
                   value={formData.officeAddress}
                   onChange={handleChange}
                   placeholder="Business/Work location"
@@ -165,12 +165,12 @@ const App = () => {
                 <label className="field-label">
                   <Phone size={18} /> Phone Number
                 </label>
-                <input 
-                  type="tel" 
-                  name="phone" 
+                <input
+                  type="tel"
+                  name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  required 
+                  required
                   placeholder="080 1234 5678"
                   className="custom-input"
                 />
@@ -179,12 +179,12 @@ const App = () => {
                 <label className="field-label">
                   <MessageSquare size={18} /> WhatsApp Number
                 </label>
-                <input 
-                  type="tel" 
-                  name="whatsapp" 
+                <input
+                  type="tel"
+                  name="whatsapp"
                   value={formData.whatsapp}
                   onChange={handleChange}
-                  required 
+                  required
                   placeholder="080 1234 5678"
                   className="custom-input"
                 />
@@ -196,8 +196,8 @@ const App = () => {
                 <label className="field-label">
                   <Users size={18} /> Gender
                 </label>
-                <select 
-                  name="gender" 
+                <select
+                  name="gender"
                   value={formData.gender}
                   onChange={handleChange}
                   required
@@ -213,12 +213,12 @@ const App = () => {
                 <label className="field-label">
                   <Calendar size={18} /> Date of Birth
                 </label>
-                <input 
-                  type="date" 
-                  name="dob" 
+                <input
+                  type="date"
+                  name="dob"
                   value={formData.dob}
                   onChange={handleChange}
-                  required 
+                  required
                   className="custom-input"
                 />
               </div>
@@ -229,12 +229,12 @@ const App = () => {
                 <label className="field-label">
                   <Briefcase size={18} /> Occupation
                 </label>
-                <input 
-                  type="text" 
-                  name="occupation" 
+                <input
+                  type="text"
+                  name="occupation"
                   value={formData.occupation}
                   onChange={handleChange}
-                  required 
+                  required
                   placeholder="Current Profession"
                   className="custom-input"
                 />
@@ -243,9 +243,9 @@ const App = () => {
                 <label className="field-label">
                   <User size={18} /> Class Friend
                 </label>
-                <input 
-                  type="text" 
-                  name="classFriend" 
+                <input
+                  type="text"
+                  name="classFriend"
                   value={formData.classFriend}
                   onChange={handleChange}
                   placeholder="Name of a school friend"
@@ -258,8 +258,8 @@ const App = () => {
               <label className="field-label">
                 <GraduationCap size={18} /> Class In
               </label>
-              <select 
-                name="classIn" 
+              <select
+                name="classIn"
                 value={formData.classIn}
                 onChange={handleChange}
                 required
@@ -276,10 +276,10 @@ const App = () => {
             </div>
 
             <div className="checkbox-field">
-              <input 
-                type="checkbox" 
+              <input
+                type="checkbox"
                 id="acceptConduct"
-                name="acceptConduct" 
+                name="acceptConduct"
                 checked={formData.acceptConduct}
                 onChange={handleChange}
                 required
@@ -289,8 +289,8 @@ const App = () => {
               </label>
             </div>
 
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               disabled={status === 'loading'}
               className="submit-btn"
             >
@@ -301,7 +301,7 @@ const App = () => {
                 </>
               ) : (
                 <>
-                  Submit to Database <ChevronRight size={20} style={{ marginLeft: '10px' }} />
+                  Upload Data <ChevronRight size={20} style={{ marginLeft: '10px' }} />
                 </>
               )}
             </button>
@@ -313,7 +313,7 @@ const App = () => {
       <AnimatePresence>
         {showModal && (
           <div className="modal-overlay">
-            <motion.div 
+            <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
@@ -324,7 +324,7 @@ const App = () => {
                   <CheckCircle size={80} style={{ color: '#22C55E', marginBottom: '20px' }} />
                   <h3 style={{ fontSize: '1.8rem', fontWeight: '800', marginBottom: '10px' }}>Success!</h3>
                   <p style={{ color: '#666', marginBottom: '25px', fontSize: '1.1rem' }}>
-                    Thank you. Your record has been successfully uploaded to the central spreadsheet.
+                    Thank you. Your record has been successfully uploaded to the central Database for Admins.
                   </p>
                 </>
               ) : (
@@ -336,9 +336,9 @@ const App = () => {
                   </p>
                 </>
               )}
-              <button 
+              <button
                 onClick={() => setShowModal(false)}
-                className="submit-btn" 
+                className="submit-btn"
                 style={{ background: '#f0f0f0', color: '#1a1a1a', fontWeight: '700' }}
               >
                 Close Window
